@@ -16,7 +16,7 @@ $d.Month
 $d.TimeOfDay
 $d.Ticks
 
-$sname = Read-Host "Enter the name of the service: "
+$sname = Read-Host "Enter the name of the service"
 $s = Get-Service -Name $sname
 
-Write-Host "$($s.Name) is $($s.Status)"
+Write-Host "$($s.Name) is $($s.Status)" -ForegroundColor Green -BackgroundColor Red
