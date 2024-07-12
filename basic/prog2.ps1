@@ -10,7 +10,6 @@ if ($service) {
         $response = Read-Host "RUNNING - Do you want to stop it? (y/n)"
         if ($response -eq 'y') {
             Stop-Service -Name $serviceName
-            Write-Host "The service '$serviceName' : STOPPED"
         }
     } else {
         $response = Read-Host "STOPPED - Do you want to start it? (y/n)"
@@ -18,8 +17,8 @@ if ($service) {
             Start-Service -Name $serviceName 
         }
     }
-    $service0 = Get-Service | Where-Object { $_.Name -eq $serviceName }
-    Write-Host "$service0.serviceName is currently $service0.status"
+    $service0 = Get-Service -Name $serviceName
+    Write-Host "$($service0.serviceName) is currently $($service0.status)"
 } else {
     Write-Host "The service '$serviceName' does not exist."
 }
