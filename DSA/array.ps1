@@ -5,7 +5,6 @@ $arr1 = 6,7,8,9,10
 $arr1.GetType()
 
 $arr2 = $arr0 + $arr1 # arr0, arr1
-cls
 $arr2
 
 $arr3 = @(1,2,3,4,5,6,7,8,9,10)
