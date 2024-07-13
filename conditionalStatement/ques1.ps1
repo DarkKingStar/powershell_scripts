@@ -2,18 +2,19 @@
 asked user to service name and my script will go to the backend and ask me the service is running or not.
 If running asked user to stopped it or cancel it or vice versa
 #>
-$service = Read-Host "Please enter a service name" |`
-            Get-Service |`
-            Where-Object { $_.Name -eq $serviceName }
+$serviceName = Read-Host "Please enter a service name"
+$service = Get-Service -Name $serviceName
 if ($service) {
-    $flagService = If($service.Status -eq 'Running') {1} Else {0}
+    $flagService = $service.Status -eq 'Running'
     $startorstop = If($flagService) {"STOP"} Else {"START"}
     $response = Read-Host "$($service.status) - Do you want to $startorstop it? (y/n)"
-    if($response -eq 'y' -or $response -eq  'yes'){
+    if(($response -eq 'y') -or ($response -eq  'yes')){
         If($flagService){Stop-Service -Name $service.Name}else{Start-Service $service.Name}
     }
     $service0 = Get-Service -Name $serviceName
-    Write-Host "$($service0.name) is currently $($service0.status)" -BackgroundColor Blue -ForegroundColor Red
+    If($service0.Status -ne $service.Status) {
+        Write-Host "$($service0.name) is currently $($service0.status)" -BackgroundColor Blue -ForegroundColor Red
+    }
 } else {
     Write-Host "The service '$serviceName' does not exist." -BackgroundColor Red -ForegroundColor Blue
 }
