@@ -1,0 +1,26 @@
+CIM - Common Information Model
+-----> to gather the information of:
+            -   Network
+            -   Software
+            -   Hardware
+            -   Users
+            -   Process
+            -   Services
+            -   Local Machine
+            -   Remote Machine
+
+WMI - Windows Mgmt Instrumentation
+    - Microsoft's representation of CIM
+    - to gather the information of:
+        -   Network
+            -   Software
+            -   Hardware
+            -   Users
+            -   Process
+            -   Services
+            -   Local Machine
+            -   Remote Machine
+
+CMDLET: Get-WMIObject
+ALIAS: gwmi
+
