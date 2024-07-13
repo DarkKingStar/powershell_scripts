@@ -1,4 +1,5 @@
-while(1){
+$i = 1
+while($i){
     switch(Read-Host "1.display ip address 2.ping google 3.open notepad 4.exit`nEnter your choose"){
         "1"{
             $ip = Get-NetIPAddress | Where-Object {($_.ifIndex -eq 12) -and ($_.PrefixOrigin -eq "Dhcp")} | Select-Object IPAddress
@@ -6,14 +7,17 @@ while(1){
             Write-Host $ip.IPAddress -ForegroundColor Blue
         }
         "2"{
-            Test-Connection google.com
-            Test-Connection google.co.in
+            if(Test-Connection google.caom -Count 2 -ErrorAction SilentlyContinue){ #remove error msg
+                Write-Host "Google is pingable" -ForegroundColor Green
+            }else{
+                Write-Host "Google is not pinging" -ForegroundColor Red
+            }
         }
         "3"{
-            Start-Process 'C:\windows\system32\notepad.exe'
+            Start-Process notepad.exe
         }
         "4"{
-            exit
+            $i = 0
         }
         default{Write-Host "invalid choose"}
     }

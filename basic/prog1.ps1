@@ -17,3 +17,6 @@ Get-Command -Verb "convertTo" | Measure-Object #list the total number of cmdlets
 Get-Command convertto* # list of cmdlets
 
 
+Get-help about_*
+
+Get-help about_Foreach
