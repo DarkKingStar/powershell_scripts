@@ -5,6 +5,7 @@ $web = Get-Content C:\new.txt
 # $web = Import-Csv C:\new.csv
 # read json file
 # $web = Get-Content C:\new.json
+Remove-Item -Path C:\out.txt
 foreach($i in $web){
     if(Test-Connection $i -Count 1 -ErrorAction SilentlyContinue){
         Write-Host "$i is pingable" -ForegroundColor Green
